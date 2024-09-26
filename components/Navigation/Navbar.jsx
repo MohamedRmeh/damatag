@@ -1,7 +1,6 @@
 'use client';
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
-import { auth } from "@/services/firebase";
 
 const Navbar = () => {
   const { user, handleLogout } = useAuth(); // الحصول على المستخدم من السياق

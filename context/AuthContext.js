@@ -25,7 +25,6 @@ export const AuthProvider = ({ children }) => {
 
 
  const apiRequest = async (type, endpoint, data) => {
-  const { auth } = require('@/services/firebase');
 
   try {
     if (type === 'fetch') {
@@ -38,7 +37,10 @@ export const AuthProvider = ({ children }) => {
     else if (type === 'login') {
       const userCredential = await signInWithEmailAndPassword(auth, data.email, data.password);
       const token = await userCredential.user.getIdToken();
-      localStorage.setItem("firebaseToken", token);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("firebaseToken", token);
+      }
+      
       return userCredential.user;
     }
     else if (type === 'register') {

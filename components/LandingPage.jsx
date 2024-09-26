@@ -1,6 +1,6 @@
 "use client";
 import { useAuth } from "@/context/AuthContext";
-import Posts from "./posts";
+import Posts from "./Posts";
 const LandingPage = () => {
   const { user } = useAuth();
 
